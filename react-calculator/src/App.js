@@ -114,17 +114,18 @@ function evaluate({ currentOperand, previousOperand, operation }) {
       computation = prev / current;
       break;
   }
-  return computation;
+  return computation.toString();
 }
 
 
-const INTEGER_FORMATOR = Intl.NumberFormat("en-us", {
+const INTEGER_FORMATOR = new Intl.NumberFormat("en-us", {
   maximumFractionDigits: 0,
 });
 
 
 function formatOperand(operand){
   if(operand == null) return ;
+  console.log('operand:', operand, typeof operand);
   const [integer, decimal] = operand.split('.');
 
   if (decimal == null) return INTEGER_FORMATOR.format(integer); 
